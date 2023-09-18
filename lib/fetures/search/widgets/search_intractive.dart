@@ -31,7 +31,6 @@ class _SearchResultwidgetState extends State<SearchResultwidget> {
             itemColor: Colors.grey,
             onChanged: (value) {
               myData.onTextChanged(value);
-              setState(() {});
             },
           ),
         ),
