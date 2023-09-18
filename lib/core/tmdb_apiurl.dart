@@ -5,6 +5,7 @@ class TmdbApiUrl {
   static const imageBaseUrl = "https://image.tmdb.org/t/p/w500";
   static const youtubeBaseUrl = "https://www.youtube.com/watch?v=";
   static const upcomingMoviesUrl = "$baseUrl/movie/upcoming?api_key=$apiKey";
+  static const searchBaseUrl = "$baseUrl/search/multi?api_key=$apiKey&query=";
   static String trailerMoviesUrl(String movieID) {
     return "$baseUrl/movie/$movieID/videos?api_key=$apiKey";
   }

@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/fetures/home/controller/home_controller.dart';
+import 'package:movie_app/fetures/search/repository/get_serch_result.dart';
 import 'package:movie_app/fetures/splash/screens/splash_screen.dart';
 import 'package:movie_app/firebase_options.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +16,9 @@ void main() async {
       providers: [
         ChangeNotifierProvider(
           create: (_) => HomeController(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => SearchRepository(),
         ),
       ],
       child: const MyApp(),
