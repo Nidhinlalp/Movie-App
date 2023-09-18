@@ -12,28 +12,30 @@ class SearchRepository extends ChangeNotifier {
   SearchListModel? searchResultData;
 
   final Debouncer _debouncer = Debouncer(miiliseconds: 500);
+
+  /// Call this function when the text in the search input field changes.
   void onTextChanged(String query) {
-    // This function will be debounced and only executed after a 500ms delay
     _debouncer.run(() {
-      getSearchResult(query);
-      print('Search for: $query');
-      // Perform your search or other action here
+      fetchSearchResults(query);
     });
   }
 
-  void getSearchResult(String query) async {
+  /// Fetch search results based on the provided query.
+  void fetchSearchResults(String query) async {
     try {
-      var response =
+      final response =
           await http.get(Uri.parse("${TmdbApiUrl.searchBaseUrl}$query"));
-      if (response.statusCode == 200) {
-        var json = jsonDecode(response.body);
 
-        searchResultData = SearchListModel.fromJson(json);
+      if (response.statusCode == 200) {
+        final jsonData = jsonDecode(response.body);
+
+        searchResultData = SearchListModel.fromJson(jsonData);
         notifyListeners();
-        log(searchResultData!.movieModelList[0].imageUrl);
+      } else {
+        log('Failed to load data: ${response.statusCode}');
       }
     } catch (e) {
-      log("getSearchResult: Failed to load Data!");
+      log('Error: $e');
     }
   }
 }
