@@ -29,8 +29,8 @@ class _SearchResultwidgetState extends State<SearchResultwidget> {
             style: const TextStyle(color: Colors.black),
             backgroundColor: Colors.grey[900],
             itemColor: Colors.grey,
-            onSubmitted: (value) {
-              myData.getSearchResult(value);
+            onChanged: (value) {
+              myData.onTextChanged(value);
               setState(() {});
             },
           ),
