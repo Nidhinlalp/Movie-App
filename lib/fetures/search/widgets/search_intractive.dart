@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/constants/color/color.dart';
 import 'package:movie_app/constants/widget/loader.dart';
 import 'package:movie_app/fetures/search/repository/get_serch_result.dart';
 import 'package:movie_app/fetures/search/screens/serch_screen.dart';
@@ -28,7 +29,7 @@ class _SearchResultwidgetState extends State<SearchResultwidget> {
             controller: searchController,
             style: const TextStyle(color: Colors.black),
             backgroundColor: Colors.grey[900],
-            itemColor: Colors.grey,
+            itemColor: white,
             onChanged: (value) {
               myData.onTextChanged(value);
             },
